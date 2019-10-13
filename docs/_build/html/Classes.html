@@ -1,0 +1,310 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Classes &mdash; PySimrel 0.5.5 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Utilities Functions" href="Utilities.html" />
+    <link rel="prev" title="Modules" href="Modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PySimrel
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.5.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simrel-class">Simrel Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helper-classes">Helper Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Utilities.html">Utilities Functions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PySimrel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Classes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="classes">
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simrel-class">
+<h2>Simrel Class<a class="headerlink" href="#simrel-class" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pysimrel.Simrel">
+<em class="property">class </em><code class="sig-prename descclassname">pysimrel.</code><code class="sig-name descname">Simrel</code><span class="sig-paren">(</span><em class="sig-param">n_pred: Union[str</em>, <em class="sig-param">int] = 10</em>, <em class="sig-param">n_relpred: Union[str</em>, <em class="sig-param">int] = '4</em>, <em class="sig-param">5'</em>, <em class="sig-param">pos_relcomp: Union[str</em>, <em class="sig-param">int] = '0</em>, <em class="sig-param">1; 2</em>, <em class="sig-param">3</em>, <em class="sig-param">4'</em>, <em class="sig-param">gamma: float = 0.7</em>, <em class="sig-param">rsq: Union[str</em>, <em class="sig-param">int] = '0.7</em>, <em class="sig-param">0.8'</em>, <em class="sig-param">n_resp: Union[str</em>, <em class="sig-param">int] = 4</em>, <em class="sig-param">eta: float = 0.7</em>, <em class="sig-param">pos_resp: Union[str</em>, <em class="sig-param">int] = '0</em>, <em class="sig-param">2; 1</em>, <em class="sig-param">3'</em>, <em class="sig-param">mu_x: Union[str</em>, <em class="sig-param">int] = None</em>, <em class="sig-param">mu_y: Union[str</em>, <em class="sig-param">int] = None</em>, <em class="sig-param">parameter_parsed: bool = False</em>, <em class="sig-param">properties_computed: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/pysimrel.html#Simrel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysimrel.Simrel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main Class for simulated objects</p>
+<p>The class contains all the definitions of <cite>simrel</cite> objects. The class will also
+provide necessary methods to compute various population properties.</p>
+<dl class="attribute">
+<dt id="pysimrel.Simrel.n_pred">
+<code class="sig-name descname">n_pred</code><a class="headerlink" href="#pysimrel.Simrel.n_pred" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of predictor variables. Ex: <cite>n_pred: 10</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Either integer or string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysimrel.Simrel.n_relpred">
+<code class="sig-name descname">n_relpred</code><a class="headerlink" href="#pysimrel.Simrel.n_relpred" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of relevant predictor variables for each response components
+In the case of single response model, the parameters refers to the
+number of predictors relevant for that single response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Either integer or string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysimrel.Simrel.parse_parameters">
+<code class="sig-name descname">parse_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/pysimrel.html#Simrel.parse_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysimrel.Simrel.parse_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the parameters passed during initialization
+This method parse the parameters which are passed as string into
+a nested list. It uses <code class="xref py py-func docutils literal notranslate"><span class="pre">parse_parm()</span></code> function where further
+documentation can be found.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="helper-classes">
+<h2>Helper Classes<a class="headerlink" href="#helper-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pysimrel.Covariances">
+<em class="property">class </em><code class="sig-prename descclassname">pysimrel.</code><code class="sig-name descname">Covariances</code><a class="reference internal" href="_modules/pysimrel/pysimrel.html#Covariances"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysimrel.Covariances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class defining various covariances of the simulated data</p>
+<p>This provides a nice graphical output of covariances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cov_ww</strong> (<em>np.ndarray</em>) – Covariance matrix of latent components of response</p></li>
+<li><p><strong>cov_zz</strong> (<em>np.ndarray</em>) – Covariance matrix of latent components of predictors</p></li>
+<li><p><strong>cov_zw</strong> (<em>np.ndarray</em>) – Covariance matrix containing covariances between latent components of predictors and response</p></li>
+<li><p><strong>cov_yy</strong> (<em>np.ndarray</em>) – Covariance matrix of response</p></li>
+<li><p><strong>cov_xx</strong> (<em>np.ndarray</em>) – Covariance matrix of response</p></li>
+<li><p><strong>cov_xy</strong> (<em>np.ndarray</em>) – Covariance matrix containing covariances between predictors and response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pysimrel.Properties">
+<em class="property">class </em><code class="sig-prename descclassname">pysimrel.</code><code class="sig-name descname">Properties</code><a class="reference internal" href="_modules/pysimrel/pysimrel.html#Properties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysimrel.Properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>A data class for different properties of simulated object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eigen_x</strong> (<em>np.ndarray</em>) – Eigenvalues corresponding to predictors</p></li>
+<li><p><strong>eigen_y</strong> (<em>np.ndarray</em>) – Eigenvalues corresponding to responses</p></li>
+<li><p><strong>relevant_predictors</strong> (<em>np.ndarray</em>) – Position index of relevant predictors for each responses</p></li>
+<li><p><strong>sigma_latent</strong> (<em>np.ndarray</em>) – Variance-Covariance matrix of latent components of predictors and Responses</p></li>
+<li><p><strong>sigma</strong> (<em>np.ndarray</em>) – Variance-Covariance matrix of predictors and Responses</p></li>
+<li><p><strong>beta_z</strong> (<em>np.ndarray</em>) – Regression coefficient corresponding to the principal components of predictors</p></li>
+<li><p><strong>beta</strong> (<em>np.ndarray</em>) – Regression coefficient corresponding to the predictor variables</p></li>
+<li><p><strong>beta0</strong> (<em>np.ndarray</em>) – Regression Intercept</p></li>
+<li><p><strong>rsq_w</strong> (<em>np.ndarray</em>) – Coefficient of determination for latent component of responses (Variation explained by latent components of predictors on latent components of response)</p></li>
+<li><p><strong>rsq</strong> (<em>np.ndarray</em>) – Coefficient of determination for responses (Variation explained by predictors on response)</p></li>
+<li><p><strong>minerror</strong> (<em>np.ndarray</em>) – True minimum model error</p></li>
+<li><p><strong>rotation_x</strong> (<em>np.ndarray</em>) – Rotation Matrix (eigenvector matrix) corresponding to predictors</p></li>
+<li><p><strong>rotation_y</strong> (<em>np.ndarray = None</em>) – Rotation Matrix (eigenvector matrix) corresponding to response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pysimrel.Data">
+<em class="property">class </em><code class="sig-prename descclassname">pysimrel.</code><code class="sig-name descname">Data</code><span class="sig-paren">(</span><em class="sig-param">X: numpy.ndarray</em>, <em class="sig-param">Y: numpy.ndarray</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/pysimrel.html#Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pysimrel.Data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Utilities.html" class="btn btn-neutral float-right" title="Utilities Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Modules.html" class="btn btn-neutral float-left" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Raju Rimal
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

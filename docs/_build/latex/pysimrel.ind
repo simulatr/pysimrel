@@ -1,0 +1,41 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter C
+  \item \spxentry{Covariances}\spxextra{class in pysimrel}, \hyperpage{3}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{Data}\spxextra{class in pysimrel}, \hyperpage{4}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{get\_cov()}\spxextra{in module pysimrel.utilities}, \hyperpage{4}
+  \item \spxentry{get\_eigen()}\spxextra{in module pysimrel.utilities}, \hyperpage{5}
+  \item \spxentry{get\_relpred()}\spxextra{in module pysimrel.utilities}, \hyperpage{5}
+  \item \spxentry{get\_rotate()}\spxextra{in module pysimrel.utilities}, \hyperpage{5}
+  \item \spxentry{get\_rotation()}\spxextra{in module pysimrel.utilities}, \hyperpage{5}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{n\_pred}\spxextra{pysimrel.Simrel attribute}, \hyperpage{3}
+  \item \spxentry{n\_relpred}\spxextra{pysimrel.Simrel attribute}, \hyperpage{3}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{parse\_param()}\spxextra{in module pysimrel.utilities}, \hyperpage{6}
+  \item \spxentry{parse\_parameters()}\spxextra{pysimrel.Simrel method}, \hyperpage{3}
+  \item \spxentry{Properties}\spxextra{class in pysimrel}, \hyperpage{4}
+  \item \spxentry{pysimrel}\spxextra{module}, \hyperpage{3}
+  \item \spxentry{pysimrel.utilities}\spxextra{module}, \hyperpage{4}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{sample\_cov()}\spxextra{in module pysimrel.utilities}, \hyperpage{6}
+  \item \spxentry{sample\_extra\_pos()}\spxextra{in module pysimrel.utilities}, \hyperpage{6}
+  \item \spxentry{Simrel}\spxextra{class in pysimrel}, \hyperpage{3}
+
+\end{sphinxtheindex}
