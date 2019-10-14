@@ -163,7 +163,7 @@
 <span class="sd">    Sample position index of extra relevant predictors from irrelevant predictors in ``irrel_pos``.</span>
 
 <span class="sd">    :param rs: A numpy RandomSeed object</span>
-<span class="sd">    :type rs: int</span>
+<span class="sd">    :type rs: np.random.mtrand.RandomState</span>
 <span class="sd">    :param n_extra_pos: An integer for number of extra position index to sample</span>
 <span class="sd">    :type n_extra_pos: int</span>
 <span class="sd">    :param extra_pos: A list container for collecting extra relevant components</span>
@@ -175,7 +175,7 @@
 <span class="sd">    :rtype: list</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
+    <span class="n">irrel_pos</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">irrel_pos</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">n_extra_pos</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">extra_pos</span><span class="p">,</span> <span class="n">irrel_pos</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">irrel_pos</span><span class="p">),</span> <span class="n">n_extra_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>

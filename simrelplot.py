@@ -9,12 +9,8 @@ import matplotlib.pyplot as plt
 class SimrelPlot:
     pass
 
-
-sobj = Simrel()
-sobj.parse_parameters()
-sobj.compute_properties()
-
-sobj.covariances.cov_xx
-
+if __name__ == "__main__":
+    sobj = Simrel()
+    sobj.properties
 
 

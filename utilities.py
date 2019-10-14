@@ -10,7 +10,7 @@ def sample_extra_pos(rs, n_extra_pos, extra_pos, irrel_pos):
     Sample position index of extra relevant predictors from irrelevant predictors in ``irrel_pos``.
 
     :param rs: A numpy RandomSeed object
-    :type rs: int
+    :type rs: np.random.mtrand.RandomState
     :param n_extra_pos: An integer for number of extra position index to sample
     :type n_extra_pos: int
     :param extra_pos: A list container for collecting extra relevant components
@@ -22,7 +22,7 @@ def sample_extra_pos(rs, n_extra_pos, extra_pos, irrel_pos):
     :rtype: list
 
     """
-
+    irrel_pos = set(irrel_pos)
     if not n_extra_pos:
         return extra_pos, irrel_pos
     sample = set(rs.choice(list(irrel_pos), n_extra_pos[0], replace=False))
