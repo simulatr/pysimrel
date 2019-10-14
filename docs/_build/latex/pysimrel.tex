@@ -71,7 +71,7 @@
 
 
 \title{simrel Documentation}
-\date{Oct 13, 2019}
+\date{Oct 14, 2019}
 \release{0.5.5}
 \author{Raju Rimal}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -94,7 +94,56 @@ PySimrel package provides a way to simuilate data from a linear model. It provid
 \label{\detokenize{index:contents}}
 
 \section{Modules}
-\label{\detokenize{Modules:module-pysimrel}}\label{\detokenize{Modules:modules}}\label{\detokenize{Modules::doc}}\index{pysimrel (module)@\spxentry{pysimrel}\spxextra{module}}
+\label{\detokenize{Modules:modules}}\label{\detokenize{Modules::doc}}
+
+\subsection{Examples}
+\label{\detokenize{Modules:examples}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{sobj} \PYG{o}{=} \PYG{n}{Simrel}\PYG{p}{(}\PYG{n}{n\PYGZus{}pred} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{n\PYGZus{}relpred} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{4, 5}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{pos\PYGZus{}relcomp} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{0, 1; 2, 3, 4}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+go}{    gamma = 0.7, rsq = \PYGZsq{}0.7, 0.8\PYGZsq{}, n\PYGZus{}resp = 4, eta = 0.7, pos\PYGZus{}resp = \PYGZsq{}0, 2; 1, 3\PYGZsq{})}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{sobj}\PYG{o}{.}\PYG{n}{properties}\PYG{p}{)}
+\PYG{g+go}{Numpy Arrays:}
+\PYG{g+go}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{g+go}{eigen\PYGZus{}x:                 Shape: (10,)}
+\PYG{g+go}{eigen\PYGZus{}y:                 Shape: (4,)}
+\PYG{g+go}{rotation\PYGZus{}x:              Shape: (10, 10)}
+\PYG{g+go}{rotation\PYGZus{}y:              Shape: (4, 4)}
+\PYG{g+go}{sigma\PYGZus{}latent:            Shape: (14, 14)}
+\PYG{g+go}{sigma:                   Shape: (14, 14)}
+\PYG{g+go}{rsq:                     Shape: (4, 4)}
+\PYG{g+go}{rsq\PYGZus{}w:                   Shape: (4, 4)}
+\PYG{g+go}{minerror:                Shape: (4, 4)}
+\PYG{g+go}{beta\PYGZus{}z:                  Shape: (10, 4)}
+\PYG{g+go}{beta:                    Shape: (10, 4)}
+\PYG{g+go}{beta0:                   Shape: (4,)}
+\PYG{g+go}{Dictionaries:}
+\PYG{g+go}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{g+go}{relevant\PYGZus{}predictors:     Keys: rel, irrel}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{sobj}\PYG{o}{.}\PYG{n}{covariances}\PYG{p}{)}
+\PYG{g+go}{    Numpy Arrays:}
+\PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}ww   \textbar{}       cov\PYGZus{}wz      \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}yy   \textbar{}       cov\PYGZus{}xy      \textbar{}}
+\PYG{g+go}{    \textbar{}    (4, 4)   \textbar{}      (4, 10)      \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}zw   \textbar{}       cov\PYGZus{}zz      \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}xy   \textbar{}       cov\PYGZus{}xx      \textbar{}}
+\PYG{g+go}{    \textbar{}   (10, 4)   \textbar{}      (10, 10)     \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\end{sphinxVerbatim}
+\phantomsection\label{\detokenize{Modules:module-pysimrel}}\index{pysimrel (module)@\spxentry{pysimrel}\spxextra{module}}
 Simrel is a package for simulating linear model data
 
 
@@ -105,12 +154,58 @@ Simrel is a package for simulating linear model data
 \label{\detokenize{Classes:simrel-class}}\index{Simrel (class in pysimrel)@\spxentry{Simrel}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Simrel}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{pysimrel.}}\sphinxbfcode{\sphinxupquote{Simrel}}}{\emph{n\_pred: Union{[}str}, \emph{int{]} = 10}, \emph{n\_relpred: Union{[}str}, \emph{int{]} = '4}, \emph{5'}, \emph{pos\_relcomp: Union{[}str}, \emph{int{]} = '0}, \emph{1; 2}, \emph{3}, \emph{4'}, \emph{gamma: float = 0.7}, \emph{rsq: Union{[}str}, \emph{int{]} = '0.7}, \emph{0.8'}, \emph{n\_resp: Union{[}str}, \emph{int{]} = 4}, \emph{eta: float = 0.7}, \emph{pos\_resp: Union{[}str}, \emph{int{]} = '0}, \emph{2; 1}, \emph{3'}, \emph{mu\_x: Union{[}str}, \emph{int{]} = None}, \emph{mu\_y: Union{[}str}, \emph{int{]} = None}, \emph{parameter\_parsed: bool = False}, \emph{properties\_computed: bool = False}}{}
+\phantomsection\label{\detokenize{Classes:pysimrel.Simrel}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Simrel}}}{\emph{n\_pred: Union{[}str}, \emph{int{]} = 10}, \emph{n\_relpred: Union{[}str}, \emph{int{]} = '4}, \emph{5'}, \emph{pos\_relcomp: Union{[}str}, \emph{int{]} = '0}, \emph{1; 2}, \emph{3}, \emph{4'}, \emph{gamma: float = 0.7}, \emph{rsq: Union{[}str}, \emph{int{]} = '0.7}, \emph{0.8'}, \emph{n\_resp: Union{[}str}, \emph{int{]} = 4}, \emph{eta: float = 0.7}, \emph{pos\_resp: Union{[}str}, \emph{int{]} = '0}, \emph{2; 1}, \emph{3'}, \emph{mu\_x: Union{[}str}, \emph{int{]} = None}, \emph{mu\_y: Union{[}str}, \emph{int{]} = None}, \emph{parameter\_parsed: bool = False}, \emph{properties\_computed: bool = False}}{}
 Main Class for simulated objects
 
 The class contains all the definitions of \sphinxtitleref{simrel} objects. The class will also
 provide necessary methods to compute various population properties.
-\index{n\_pred (pysimrel.Simrel attribute)@\spxentry{n\_pred}\spxextra{pysimrel.Simrel attribute}}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{sobj} \PYG{o}{=} \PYG{n}{Simrel}\PYG{p}{(}\PYG{n}{n\PYGZus{}pred} \PYG{o}{=} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{n}{n\PYGZus{}relpred} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{4, 5}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{n}{pos\PYGZus{}relcomp} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{0, 1; 2, 3, 4}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{g+go}{    gamma = 0.7, rsq = \PYGZsq{}0.7, 0.8\PYGZsq{}, n\PYGZus{}resp = 4, eta = 0.7, pos\PYGZus{}resp = \PYGZsq{}0, 2; 1, 3\PYGZsq{})}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{sobj}\PYG{o}{.}\PYG{n}{properties}\PYG{p}{)}
+\PYG{g+go}{Numpy Arrays:}
+\PYG{g+go}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{g+go}{eigen\PYGZus{}x:                 Shape: (10,)}
+\PYG{g+go}{eigen\PYGZus{}y:                 Shape: (4,)}
+\PYG{g+go}{rotation\PYGZus{}x:              Shape: (10, 10)}
+\PYG{g+go}{rotation\PYGZus{}y:              Shape: (4, 4)}
+\PYG{g+go}{sigma\PYGZus{}latent:            Shape: (14, 14)}
+\PYG{g+go}{sigma:                   Shape: (14, 14)}
+\PYG{g+go}{rsq:                     Shape: (4, 4)}
+\PYG{g+go}{rsq\PYGZus{}w:                   Shape: (4, 4)}
+\PYG{g+go}{minerror:                Shape: (4, 4)}
+\PYG{g+go}{beta\PYGZus{}z:                  Shape: (10, 4)}
+\PYG{g+go}{beta:                    Shape: (10, 4)}
+\PYG{g+go}{beta0:                   Shape: (4,)}
+\PYG{g+go}{Dictionaries:}
+\PYG{g+go}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{g+go}{relevant\PYGZus{}predictors:     Keys: rel, irrel}
+\end{sphinxVerbatim}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{sobj}\PYG{o}{.}\PYG{n}{covariances}\PYG{p}{)}
+\PYG{g+go}{    Numpy Arrays:}
+\PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}ww   \textbar{}       cov\PYGZus{}wz      \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}yy   \textbar{}       cov\PYGZus{}xy      \textbar{}}
+\PYG{g+go}{    \textbar{}    (4, 4)   \textbar{}      (4, 10)      \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}zw   \textbar{}       cov\PYGZus{}zz      \textbar{}}
+\PYG{g+go}{    \textbar{}    cov\PYGZus{}xy   \textbar{}       cov\PYGZus{}xx      \textbar{}}
+\PYG{g+go}{    \textbar{}   (10, 4)   \textbar{}      (10, 10)     \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\end{sphinxVerbatim}
+\index{n\_pred (Simrel attribute)@\spxentry{n\_pred}\spxextra{Simrel attribute}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{Classes:pysimrel.Simrel.n_pred}}\pysigline{\sphinxbfcode{\sphinxupquote{n\_pred}}}
@@ -123,7 +218,7 @@ Either integer or string
 
 \end{fulllineitems}
 
-\index{n\_relpred (pysimrel.Simrel attribute)@\spxentry{n\_relpred}\spxextra{pysimrel.Simrel attribute}}
+\index{n\_relpred (Simrel attribute)@\spxentry{n\_relpred}\spxextra{Simrel attribute}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{Classes:pysimrel.Simrel.n_relpred}}\pysigline{\sphinxbfcode{\sphinxupquote{n\_relpred}}}
@@ -138,7 +233,7 @@ Either integer or string
 
 \end{fulllineitems}
 
-\index{parse\_parameters() (pysimrel.Simrel method)@\spxentry{parse\_parameters()}\spxextra{pysimrel.Simrel method}}
+\index{parse\_parameters() (Simrel method)@\spxentry{parse\_parameters()}\spxextra{Simrel method}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{Classes:pysimrel.Simrel.parse_parameters}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{parse\_parameters}}}{}{}
@@ -158,7 +253,7 @@ documentation can be found.
 \label{\detokenize{Classes:helper-classes}}\index{Covariances (class in pysimrel)@\spxentry{Covariances}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Covariances}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{pysimrel.}}\sphinxbfcode{\sphinxupquote{Covariances}}}
+\phantomsection\label{\detokenize{Classes:pysimrel.Covariances}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Covariances}}}
 Class defining various covariances of the simulated data
 
 This provides a nice graphical output of covariances.
@@ -191,7 +286,7 @@ This provides a nice graphical output of covariances.
 \index{Properties (class in pysimrel)@\spxentry{Properties}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Properties}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{pysimrel.}}\sphinxbfcode{\sphinxupquote{Properties}}}
+\phantomsection\label{\detokenize{Classes:pysimrel.Properties}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Properties}}}
 A data class for different properties of simulated object
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -243,7 +338,7 @@ A data class for different properties of simulated object
 \index{Data (class in pysimrel)@\spxentry{Data}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Data}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{pysimrel.}}\sphinxbfcode{\sphinxupquote{Data}}}{\emph{X: numpy.ndarray}, \emph{Y: numpy.ndarray}}{}
+\phantomsection\label{\detokenize{Classes:pysimrel.Data}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Data}}}{\emph{X: numpy.ndarray}, \emph{Y: numpy.ndarray}}{}
 \end{fulllineitems}
 
 
@@ -252,7 +347,7 @@ A data class for different properties of simulated object
 \label{\detokenize{Utilities:module-pysimrel.utilities}}\label{\detokenize{Utilities:utilities-functions}}\label{\detokenize{Utilities::doc}}\index{pysimrel.utilities (module)@\spxentry{pysimrel.utilities}\spxextra{module}}\index{get\_cov() (in module pysimrel.utilities)@\spxentry{get\_cov()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_cov}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{get\_cov}}}{\emph{rel\_pos}, \emph{rsq}, \emph{kappa}, \emph{lmd}, \emph{random\_seed=None}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_cov}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_cov}}}{\emph{rel\_pos}, \emph{rsq}, \emph{kappa}, \emph{lmd}, \emph{random\_seed=None}}{}
 Compute Covariances
 
 Compute covariances at the position specified in \sphinxcode{\sphinxupquote{rel\_pos}} recursively using the
@@ -289,7 +384,7 @@ np.array
 \index{get\_eigen() (in module pysimrel.utilities)@\spxentry{get\_eigen()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_eigen}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{get\_eigen}}}{\emph{rate}, \emph{nvar}, \emph{min\_value=0.0001}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_eigen}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_eigen}}}{\emph{rate}, \emph{nvar}, \emph{min\_value=0.0001}}{}
 Compute eigen values using exponential decay function.
 \begin{equation*}
 \begin{split}\lambda_i = \text{exp}^{-\gamma(i-1)}\end{split}
@@ -316,7 +411,7 @@ A list of eigenvalues
 \index{get\_relpred() (in module pysimrel.utilities)@\spxentry{get\_relpred()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_relpred}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{get\_relpred}}}{\emph{n\_pred}, \emph{n\_relpred}, \emph{pos\_relcomp}, \emph{random\_state=None}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_relpred}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_relpred}}}{\emph{n\_pred}, \emph{n\_relpred}, \emph{pos\_relcomp}, \emph{random\_state=None}}{}
 Identify relevant predictors through sampling
 
 Get relevant and irrelevant position of predictor variables. The irrelevant
@@ -351,7 +446,7 @@ dict
 \index{get\_rotate() (in module pysimrel.utilities)@\spxentry{get\_rotate()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotate}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{get\_rotate}}}{\emph{mat}, \emph{pred\_pos}, \emph{random\_state=None}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotate}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_rotate}}}{\emph{mat}, \emph{pred\_pos}, \emph{random\_state=None}}{}
 Fill up a block of matrix \sphinxcode{\sphinxupquote{mat}} based on position index in \sphinxcode{\sphinxupquote{pred\_pos}}.
 The block will be an orthogonal rotation matrix.
 \begin{quote}\begin{description}
@@ -380,7 +475,7 @@ np.array
 \index{get\_rotation() (in module pysimrel.utilities)@\spxentry{get\_rotation()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotation}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{get\_rotation}}}{\emph{rel\_irrel\_pred}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotation}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_rotation}}}{\emph{rel\_irrel\_pred}}{}
 Create orthogonal rotation matrix
 
 Creates an orthogonal rotation matrix from dictionary of relevant and irrelevant
@@ -402,7 +497,7 @@ np.array
 \index{parse\_param() (in module pysimrel.utilities)@\spxentry{parse\_param()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.parse_param}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{parse\_param}}}{\emph{parm: Union{[}str, int, None{]}}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.parse_param}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{parse\_param}}}{\emph{parm: Union{[}str, int, None{]}}}{}
 Parse the parameters from string to a nested list
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -421,7 +516,7 @@ list
 \index{sample\_cov() (in module pysimrel.utilities)@\spxentry{sample\_cov()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_cov}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{sample\_cov}}}{\emph{lmd}, \emph{rsq}, \emph{pos}, \emph{kappa}, \emph{alpha\_}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_cov}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{sample\_cov}}}{\emph{lmd}, \emph{rsq}, \emph{pos}, \emph{kappa}, \emph{alpha\_}}{}
 Compute covariance satisfying given parameters
 
 Compute covariance from a sample of uniform distribution satisfying \sphinxtitleref{rsq}, a set of \sphinxtitleref{lmd} and \sphinxtitleref{kappa}
@@ -457,14 +552,14 @@ np.array
 \index{sample\_extra\_pos() (in module pysimrel.utilities)@\spxentry{sample\_extra\_pos()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_extra_pos}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{pysimrel.utilities.}}\sphinxbfcode{\sphinxupquote{sample\_extra\_pos}}}{\emph{rs}, \emph{n\_extra\_pos}, \emph{extra\_pos}, \emph{irrel\_pos}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_extra_pos}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{sample\_extra\_pos}}}{\emph{rs}, \emph{n\_extra\_pos}, \emph{extra\_pos}, \emph{irrel\_pos}}{}
 Sample Extra Position Required
 
 Sample position index of extra relevant predictors from irrelevant predictors in \sphinxcode{\sphinxupquote{irrel\_pos}}.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{rs}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} A numpy RandomSeed object
+\sphinxstyleliteralstrong{\sphinxupquote{rs}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.random.mtrand.RandomState}}) \textendash{} A numpy RandomSeed object
 
 \item {} 
 \sphinxstyleliteralstrong{\sphinxupquote{n\_extra\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} An integer for number of extra position index to sample

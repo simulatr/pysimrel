@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <title>pysimrel.utilities</title>
+    <link rel="stylesheet" href="../../_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pysimrel.utilities</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">reduce</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Prm</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+
+<div class="viewcode-block" id="sample_extra_pos"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.sample_extra_pos">[docs]</a><span class="k">def</span> <span class="nf">sample_extra_pos</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="n">n_extra_pos</span><span class="p">,</span> <span class="n">extra_pos</span><span class="p">,</span> <span class="n">irrel_pos</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sample Extra Position Required</span>
+
+<span class="sd">    Sample position index of extra relevant predictors from irrelevant predictors in ``irrel_pos``.</span>
+
+<span class="sd">    :param rs: A numpy RandomSeed object</span>
+<span class="sd">    :type rs: np.random.mtrand.RandomState</span>
+<span class="sd">    :param n_extra_pos: An integer for number of extra position index to sample</span>
+<span class="sd">    :type n_extra_pos: int</span>
+<span class="sd">    :param extra_pos: A list container for collecting extra relevant components</span>
+<span class="sd">    :type extra_pos: list</span>
+<span class="sd">    :param irrel_pos: A list or set of irrelevant position indices</span>
+<span class="sd">    :type irrel_pos: list</span>
+
+<span class="sd">    :returns: a list of relevant and irrelevant position indices</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">irrel_pos</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">irrel_pos</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">n_extra_pos</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">extra_pos</span><span class="p">,</span> <span class="n">irrel_pos</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">rs</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">irrel_pos</span><span class="p">),</span> <span class="n">n_extra_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">sample_extra_pos</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="n">n_extra_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">extra_pos</span> <span class="o">+</span> <span class="p">[</span><span class="n">sample</span><span class="p">],</span> <span class="n">irrel_pos</span> <span class="o">-</span> <span class="n">sample</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_relpred"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.get_relpred">[docs]</a><span class="k">def</span> <span class="nf">get_relpred</span><span class="p">(</span><span class="n">n_pred</span><span class="p">,</span> <span class="n">n_relpred</span><span class="p">,</span> <span class="n">pos_relcomp</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Identify relevant predictors through sampling</span>
+
+<span class="sd">    Get relevant and irrelevant position of predictor variables. The irrelevant</span>
+<span class="sd">    components index are the one which are not in ``pos_relcomp``. The number of extra components</span>
+<span class="sd">    are defined in ``n_relpred``.</span>
+
+<span class="sd">    :param n_pred: Number of predictor variables</span>
+<span class="sd">    :type n_pred: int</span>
+<span class="sd">    :param n_relpred: List of number of predictors relevant for each response</span>
+<span class="sd">    :type n_relpred: list</span>
+<span class="sd">    :param pos_relcomp: List of List containing the position index of relevant components</span>
+<span class="sd">    :type pos_relcomp: list</span>
+<span class="sd">    :param random_state: An integer for random state</span>
+<span class="sd">    :type random_state: int</span>
+
+<span class="sd">    :returns: A dictionary with relevant and irrelevant position index of predictors</span>
+<span class="sd">    :rtype: dict</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_relcomp</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pos_relcomp</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">n_relpred</span><span class="p">,</span> <span class="n">n_relcomp</span><span class="p">)]):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Number of relevant predictors &quot;</span> \
+                         <span class="s2">&quot;can not be less than total number of components. &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_relpred</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_relcomp</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning: Relevant predictors should have same length &quot;</span> \
+              <span class="s2">&quot;as position of relevant components list.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_relcomp</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_relpred</span><span class="p">):</span>
+            <span class="n">pos_relcomp</span> <span class="o">=</span> <span class="n">pos_relcomp</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">n_relpred</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n_relpred</span> <span class="o">=</span> <span class="n">n_relpred</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_relcomp</span><span class="p">)]</span>
+
+    <span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+    <span class="n">pred_pos</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_pred</span><span class="p">))</span>
+    <span class="n">relpos</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pos_relcomp</span><span class="p">]</span>
+    <span class="n">irrel_pos</span> <span class="o">=</span> <span class="n">pred_pos</span> <span class="o">-</span> <span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="n">relpos</span><span class="p">)</span>
+    <span class="n">n_extra_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">n_relpred</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">relpos</span><span class="p">))]</span>
+    <span class="k">if</span> <span class="nb">all</span><span class="p">([</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">n_extra_pos</span><span class="p">]):</span>
+        <span class="n">rel</span><span class="p">,</span> <span class="n">irrel</span> <span class="o">=</span> <span class="n">relpos</span><span class="p">,</span> <span class="n">irrel_pos</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rel</span><span class="p">,</span> <span class="n">irrel</span> <span class="o">=</span> <span class="n">sample_extra_pos</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="n">n_extra_pos</span><span class="p">,</span> <span class="p">[],</span> <span class="n">irrel_pos</span><span class="p">)</span>
+        <span class="n">rel</span> <span class="o">=</span> <span class="p">[</span><span class="nb">set</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">relpos</span><span class="p">,</span> <span class="n">rel</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rel</span><span class="o">=</span><span class="n">rel</span><span class="p">,</span> <span class="n">irrel</span><span class="o">=</span><span class="n">irrel</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="get_eigen"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.get_eigen">[docs]</a><span class="k">def</span> <span class="nf">get_eigen</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">nvar</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute eigen values using exponential decay function.</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        \lambda_i = \\text{exp}^{-\gamma(i-1)}</span>
+
+<span class="sd">    :param rate: rate of exponential decay factor</span>
+<span class="sd">    :param nvar: Number of variables (number of eigenvalues to compute)</span>
+<span class="sd">    :param min_value: Lower limit for smallest eigenvalue</span>
+<span class="sd">    :return: A list of eigenvalues</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">rate</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Eigenvalue can not increase, rate must be larger than zero.&quot;</span><span class="p">)</span>
+    <span class="n">vec_</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">nvar</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">nu</span> <span class="o">=</span> <span class="n">min_value</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">min_value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">min_value</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">min_value</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Parameter lambda.min must be in the interval [0,1]&quot;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">([</span><span class="o">-</span><span class="n">rate</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">p_</span><span class="p">)</span> <span class="k">for</span> <span class="n">p_</span> <span class="ow">in</span> <span class="n">vec_</span><span class="p">])</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span><span class="p">)</span> <span class="o">+</span> <span class="n">nu</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="get_rotate"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.get_rotate">[docs]</a><span class="k">def</span> <span class="nf">get_rotate</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">pred_pos</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fill up a block of matrix ``mat`` based on position index in ``pred_pos``.</span>
+<span class="sd">    The block will be an orthogonal rotation matrix.</span>
+
+<span class="sd">    :param mat: A matrix possibly a square matrix as covariance</span>
+<span class="sd">    :type mat: np.array</span>
+<span class="sd">    :param pred_pos: A list of position index for the block rotation</span>
+<span class="sd">    :type pred_pos: list</span>
+<span class="sd">    :param random_state: An integer for random state to control randomness</span>
+<span class="sd">    :type random_state: int</span>
+
+<span class="sd">    :returns: A matrix of same size as ``mat`` but filled with an orthogonal block</span>
+<span class="sd">    :rtype: np.array</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred_pos</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;mat&#39; must be a two dimensional array.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred_pos</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Length of &#39;pred_pos&#39; must be less than the minimum dimension of &#39;mat&#39;&quot;</span><span class="p">)</span>
+    <span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+    <span class="n">q_mat</span> <span class="o">=</span> <span class="n">rs</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">q_mat_scaled</span> <span class="o">=</span> <span class="n">q_mat</span> <span class="o">-</span> <span class="n">q_mat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">q_mat_scaled</span><span class="p">)</span>
+    <span class="n">mat</span><span class="p">[[[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pred_pos</span><span class="p">],</span> <span class="n">pred_pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">q</span>
+    <span class="k">return</span> <span class="n">mat</span></div>
+
+
+<div class="viewcode-block" id="get_rotation"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.get_rotation">[docs]</a><span class="k">def</span> <span class="nf">get_rotation</span><span class="p">(</span><span class="n">rel_irrel_pred</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Create orthogonal rotation matrix</span>
+
+<span class="sd">    Creates an orthogonal rotation matrix from dictionary of relevant and irrelevant</span>
+<span class="sd">    positions using `get_rotate` function.</span>
+
+<span class="sd">    :param rel_irrel_pred: A dictionary of relevant and irrelevant position (possibly obtained from the function `get_relpred`.</span>
+<span class="sd">    :type rel_irrel_pred: dict</span>
+
+<span class="sd">    :returns: An orthogonal rotation matrix</span>
+<span class="sd">    :rtype: np.array</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">irrel</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">rel_irrel_pred</span><span class="p">[</span><span class="s1">&#39;irrel&#39;</span><span class="p">])</span>
+    <span class="n">rel</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rel_irrel_pred</span><span class="p">[</span><span class="s1">&#39;rel&#39;</span><span class="p">]]</span>
+    <span class="n">rel_irrel</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rel</span> <span class="o">+</span> <span class="p">[</span><span class="n">irrel</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">all_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">rel_irrel</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">all_pos</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_pos</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">get_rotate</span><span class="p">,</span> <span class="n">rel_irrel</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="sample_cov"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.sample_cov">[docs]</a><span class="k">def</span> <span class="nf">sample_cov</span><span class="p">(</span><span class="n">lmd</span><span class="p">,</span> <span class="n">rsq</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">alpha_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute covariance satisfying given parameters</span>
+
+<span class="sd">    Compute covariance from a sample of uniform distribution satisfying `rsq`, a set of `lmd` and `kappa`</span>
+
+<span class="sd">    :param lmd: A set of eigenvalue of predictors at position specified by ``pos``.</span>
+<span class="sd">    :type lmd: set or list</span>
+<span class="sd">    :param rsq: Coefficient of determination</span>
+<span class="sd">    :type rsq: float</span>
+<span class="sd">    :param pos: Position index of in which covariance need to be non-zero</span>
+<span class="sd">    :type pos: list</span>
+<span class="sd">    :param kappa: Eigenvalue corresponding to response (univariate) or response component (multivariate)</span>
+<span class="sd">    :type kappa: list</span>
+<span class="sd">    :param alpha_: A sample from univariate distribution between -1 and 1</span>
+<span class="sd">    :type kappa: list</span>
+
+<span class="sd">    :returns: An array of computed covariances of length equals to ``lmd``.</span>
+<span class="sd">    :rtype: np.array</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_pred</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lmd</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_pred</span><span class="p">,))</span>
+    <span class="n">out</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">alpha_</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">rsq</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">alpha_</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">alpha_</span><span class="p">))</span> <span class="o">*</span> <span class="n">lmd</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span> <span class="o">*</span> <span class="n">kappa</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="get_cov"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.get_cov">[docs]</a><span class="k">def</span> <span class="nf">get_cov</span><span class="p">(</span><span class="n">rel_pos</span><span class="p">,</span> <span class="n">rsq</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">lmd</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Compute Covariances</span>
+
+<span class="sd">    Compute covariances at the position specified in ``rel_pos`` recursively using the</span>
+<span class="sd">    function ``sample_cov`` satisfying the ``rsq`` and the eigen values in ``kappa`` and ``lmd``.</span>
+
+<span class="sd">    :param rel_pos: position of relevant components</span>
+<span class="sd">    :type rel_pos: list</span>
+<span class="sd">    :param rsq: A list of coefficient of determination</span>
+<span class="sd">    :type rsq: list</span>
+<span class="sd">    :param kappa: A list of eigenvalues related to response variables</span>
+<span class="sd">    :type kappa: list</span>
+<span class="sd">    :param lmd: A list of eigenvalues related to predictor variables</span>
+<span class="sd">    :type lmd: list</span>
+<span class="sd">    :param random_seed: An integer for random state</span>
+<span class="sd">    :type random_seed: int</span>
+
+<span class="sd">    :return: A matrix of dimension equals to the length of ``kappa`` by length of ``lmd`` with \</span>
+<span class="sd">    computed covariances at the position specified in ``rel_pos``.</span>
+<span class="sd">    :rtype: np.array</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_pred</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lmd</span><span class="p">)</span>
+    <span class="n">n_resp</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kappa</span><span class="p">)</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_resp</span><span class="p">,</span> <span class="n">n_pred</span><span class="p">))</span>
+    <span class="n">rs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
+    <span class="n">alpha_</span> <span class="o">=</span> <span class="p">[</span><span class="n">rs</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rel_pos</span><span class="p">]</span>
+
+    <span class="n">idx</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alpha_</span><span class="p">))</span>
+    <span class="n">cov_</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">sample_cov</span><span class="p">(</span><span class="n">lmd</span><span class="p">,</span> <span class="n">rsq</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="nb">list</span><span class="p">(</span><span class="n">rel_pos</span><span class="p">[</span><span class="n">x</span><span class="p">]),</span> <span class="n">kappa</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">alpha_</span><span class="p">[</span><span class="n">x</span><span class="p">]),</span> <span class="n">idx</span><span class="p">)</span>
+    <span class="n">mat</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">cov_</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mat</span></div>
+
+
+<div class="viewcode-block" id="parse_param"><a class="viewcode-back" href="../../Utilities.xhtml#pysimrel.utilities.parse_param">[docs]</a><span class="k">def</span> <span class="nf">parse_param</span><span class="p">(</span><span class="n">parm</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Prm</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the parameters from string to a nested list</span>
+
+<span class="sd">    :param parm: Either integer, float (in some cases) or mostly string</span>
+<span class="sd">    :type parm: str, int</span>
+
+<span class="sd">    :return: A nested list of parsed parameters</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parm</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parm</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[[</span><span class="n">parm</span><span class="p">]]</span>
+    <span class="n">parm</span> <span class="o">=</span> <span class="n">parm</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;[,;]&quot;</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">parm</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+</pre></div>
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

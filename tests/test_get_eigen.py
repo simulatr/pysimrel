@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from ..utilities import *
+from pysimrel.utilities import *
 
 @pytest.fixture
 def eigenvalues():

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <title>Classes</title>
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="classes">
+<h1>Classes</h1>
+<div class="section" id="simrel-class">
+<h2>Simrel Class</h2>
+<dl class="class">
+<dt id="pysimrel.Simrel">
+<em class="property">class </em><code class="sig-name descname">Simrel</code><span class="sig-paren">(</span><em class="sig-param">n_pred: Union[str</em>, <em class="sig-param">int] = 10</em>, <em class="sig-param">n_relpred: Union[str</em>, <em class="sig-param">int] = '4</em>, <em class="sig-param">5'</em>, <em class="sig-param">pos_relcomp: Union[str</em>, <em class="sig-param">int] = '0</em>, <em class="sig-param">1; 2</em>, <em class="sig-param">3</em>, <em class="sig-param">4'</em>, <em class="sig-param">gamma: float = 0.7</em>, <em class="sig-param">rsq: Union[str</em>, <em class="sig-param">int] = '0.7</em>, <em class="sig-param">0.8'</em>, <em class="sig-param">n_resp: Union[str</em>, <em class="sig-param">int] = 4</em>, <em class="sig-param">eta: float = 0.7</em>, <em class="sig-param">pos_resp: Union[str</em>, <em class="sig-param">int] = '0</em>, <em class="sig-param">2; 1</em>, <em class="sig-param">3'</em>, <em class="sig-param">mu_x: Union[str</em>, <em class="sig-param">int] = None</em>, <em class="sig-param">mu_y: Union[str</em>, <em class="sig-param">int] = None</em>, <em class="sig-param">parameter_parsed: bool = False</em>, <em class="sig-param">properties_computed: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/pysimrel.xhtml#Simrel"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Main Class for simulated objects</p>
+<p>The class contains all the definitions of <cite>simrel</cite> objects. The class will also
+provide necessary methods to compute various population properties.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sobj</span> <span class="o">=</span> <span class="n">Simrel</span><span class="p">(</span><span class="n">n_pred</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">n_relpred</span> <span class="o">=</span> <span class="s1">&#39;4, 5&#39;</span><span class="p">,</span> <span class="n">pos_relcomp</span> <span class="o">=</span> <span class="s1">&#39;0, 1; 2, 3, 4&#39;</span><span class="p">,</span>
+<span class="go">    gamma = 0.7, rsq = &#39;0.7, 0.8&#39;, n_resp = 4, eta = 0.7, pos_resp = &#39;0, 2; 1, 3&#39;)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sobj</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
+<span class="go">Numpy Arrays:</span>
+<span class="go">---------------------------------------------</span>
+<span class="go">eigen_x:                 Shape: (10,)</span>
+<span class="go">eigen_y:                 Shape: (4,)</span>
+<span class="go">rotation_x:              Shape: (10, 10)</span>
+<span class="go">rotation_y:              Shape: (4, 4)</span>
+<span class="go">sigma_latent:            Shape: (14, 14)</span>
+<span class="go">sigma:                   Shape: (14, 14)</span>
+<span class="go">rsq:                     Shape: (4, 4)</span>
+<span class="go">rsq_w:                   Shape: (4, 4)</span>
+<span class="go">minerror:                Shape: (4, 4)</span>
+<span class="go">beta_z:                  Shape: (10, 4)</span>
+<span class="go">beta:                    Shape: (10, 4)</span>
+<span class="go">beta0:                   Shape: (4,)</span>
+<span class="go">Dictionaries:</span>
+<span class="go">---------------------------------------------</span>
+<span class="go">relevant_predictors:     Keys: rel, irrel</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sobj</span><span class="o">.</span><span class="n">covariances</span><span class="p">)</span>
+<span class="go">    Numpy Arrays:</span>
+<span class="go">    +-------------+-------------------+</span>
+<span class="go">    |             |                   |</span>
+<span class="go">    |    cov_ww   |       cov_wz      |</span>
+<span class="go">    |    cov_yy   |       cov_xy      |</span>
+<span class="go">    |    (4, 4)   |      (4, 10)      |</span>
+<span class="go">    |             |                   |</span>
+<span class="go">    +-------------+-------------------+</span>
+<span class="go">    |             |                   |</span>
+<span class="go">    |             |                   |</span>
+<span class="go">    |    cov_zw   |       cov_zz      |</span>
+<span class="go">    |    cov_xy   |       cov_xx      |</span>
+<span class="go">    |   (10, 4)   |      (10, 10)     |</span>
+<span class="go">    |             |                   |</span>
+<span class="go">    |             |                   |</span>
+<span class="go">    +-------------+-------------------+</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="pysimrel.Simrel.n_pred">
+<code class="sig-name descname">n_pred</code></dt>
+<dd><p>Number of predictor variables. Ex: <cite>n_pred: 10</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Either integer or string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysimrel.Simrel.n_relpred">
+<code class="sig-name descname">n_relpred</code></dt>
+<dd><p>Number of relevant predictor variables for each response components
+In the case of single response model, the parameters refers to the
+number of predictors relevant for that single response</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Either integer or string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pysimrel.Simrel.parse_parameters">
+<code class="sig-name descname">parse_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/pysimrel.xhtml#Simrel.parse_parameters"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Parse the parameters passed during initialization
+This method parse the parameters which are passed as string into
+a nested list. It uses <code class="xref py py-func docutils literal notranslate"><span class="pre">parse_parm()</span></code> function where further
+documentation can be found.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="helper-classes">
+<h2>Helper Classes</h2>
+<dl class="class">
+<dt id="pysimrel.Covariances">
+<em class="property">class </em><code class="sig-name descname">Covariances</code><a class="reference internal" href="_modules/pysimrel/pysimrel.xhtml#Covariances"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Class defining various covariances of the simulated data</p>
+<p>This provides a nice graphical output of covariances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cov_ww</strong> (<em>np.ndarray</em>) – Covariance matrix of latent components of response</p></li>
+<li><p><strong>cov_zz</strong> (<em>np.ndarray</em>) – Covariance matrix of latent components of predictors</p></li>
+<li><p><strong>cov_zw</strong> (<em>np.ndarray</em>) – Covariance matrix containing covariances between latent components of predictors and response</p></li>
+<li><p><strong>cov_yy</strong> (<em>np.ndarray</em>) – Covariance matrix of response</p></li>
+<li><p><strong>cov_xx</strong> (<em>np.ndarray</em>) – Covariance matrix of response</p></li>
+<li><p><strong>cov_xy</strong> (<em>np.ndarray</em>) – Covariance matrix containing covariances between predictors and response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pysimrel.Properties">
+<em class="property">class </em><code class="sig-name descname">Properties</code><a class="reference internal" href="_modules/pysimrel/pysimrel.xhtml#Properties"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>A data class for different properties of simulated object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>eigen_x</strong> (<em>np.ndarray</em>) – Eigenvalues corresponding to predictors</p></li>
+<li><p><strong>eigen_y</strong> (<em>np.ndarray</em>) – Eigenvalues corresponding to responses</p></li>
+<li><p><strong>relevant_predictors</strong> (<em>np.ndarray</em>) – Position index of relevant predictors for each responses</p></li>
+<li><p><strong>sigma_latent</strong> (<em>np.ndarray</em>) – Variance-Covariance matrix of latent components of predictors and Responses</p></li>
+<li><p><strong>sigma</strong> (<em>np.ndarray</em>) – Variance-Covariance matrix of predictors and Responses</p></li>
+<li><p><strong>beta_z</strong> (<em>np.ndarray</em>) – Regression coefficient corresponding to the principal components of predictors</p></li>
+<li><p><strong>beta</strong> (<em>np.ndarray</em>) – Regression coefficient corresponding to the predictor variables</p></li>
+<li><p><strong>beta0</strong> (<em>np.ndarray</em>) – Regression Intercept</p></li>
+<li><p><strong>rsq_w</strong> (<em>np.ndarray</em>) – Coefficient of determination for latent component of responses (Variation explained by latent components of predictors on latent components of response)</p></li>
+<li><p><strong>rsq</strong> (<em>np.ndarray</em>) – Coefficient of determination for responses (Variation explained by predictors on response)</p></li>
+<li><p><strong>minerror</strong> (<em>np.ndarray</em>) – True minimum model error</p></li>
+<li><p><strong>rotation_x</strong> (<em>np.ndarray</em>) – Rotation Matrix (eigenvector matrix) corresponding to predictors</p></li>
+<li><p><strong>rotation_y</strong> (<em>np.ndarray = None</em>) – Rotation Matrix (eigenvector matrix) corresponding to response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pysimrel.Data">
+<em class="property">class </em><code class="sig-name descname">Data</code><span class="sig-paren">(</span><em class="sig-param">X: numpy.ndarray</em>, <em class="sig-param">Y: numpy.ndarray</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/pysimrel.xhtml#Data"><span class="viewcode-link">[source]</span></a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>
