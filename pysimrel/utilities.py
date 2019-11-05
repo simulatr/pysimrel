@@ -1,4 +1,4 @@
-from functools import reduce
+from functools import reduce, partial
 from typing import Union, Optional
 import numpy as np
 
@@ -80,7 +80,7 @@ def get_eigen(rate, nvar, min_value=1e-4):
     """Compute eigen values using exponential decay function.
 
     .. math::
-        \lambda_i = \\text{exp}^{-\gamma(i-1)}
+        \\lambda_i = \\text{exp}^{-\\gamma(i-1)}
 
     :param rate: rate of exponential decay factor
     :param nvar: Number of variables (number of eigenvalues to compute)
@@ -128,7 +128,7 @@ def get_rotate(mat, pred_pos, random_state=None):
     return mat
 
 
-def get_rotation(rel_irrel_pred):
+def get_rotation(rel_irrel_pred, random_state=None):
     """Create orthogonal rotation matrix
 
     Creates an orthogonal rotation matrix from dictionary of relevant and irrelevant
@@ -147,7 +147,10 @@ def get_rotation(rel_irrel_pred):
     rel_irrel = [x for x in rel + [irrel] if x]
     all_pos = [x for y in rel_irrel for x in y]
     mat = np.zeros((len(all_pos), len(all_pos)))
-    return reduce(get_rotate, rel_irrel, mat)
+    mat_out = reduce(
+        partial(get_rotate, random_state=random_state), 
+        rel_irrel, mat)
+    return mat_out
 
 
 def sample_cov(lmd, rsq, pos, kappa, alpha_):
