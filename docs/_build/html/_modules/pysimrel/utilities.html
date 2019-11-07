@@ -151,7 +151,7 @@
            <div itemprop="articleBody">
             
   <h1>Source code for pysimrel.utilities</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">reduce</span>
+<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">reduce</span><span class="p">,</span> <span class="n">partial</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -233,7 +233,7 @@
     <span class="sd">&quot;&quot;&quot;Compute eigen values using exponential decay function.</span>
 
 <span class="sd">    .. math::</span>
-<span class="sd">        \lambda_i = \\text{exp}^{-\gamma(i-1)}</span>
+<span class="sd">        \\lambda_i = \\text{exp}^{-\\gamma(i-1)}</span>
 
 <span class="sd">    :param rate: rate of exponential decay factor</span>
 <span class="sd">    :param nvar: Number of variables (number of eigenvalues to compute)</span>
@@ -281,7 +281,7 @@
     <span class="k">return</span> <span class="n">mat</span></div>
 
 
-<div class="viewcode-block" id="get_rotation"><a class="viewcode-back" href="../../Utilities.html#pysimrel.utilities.get_rotation">[docs]</a><span class="k">def</span> <span class="nf">get_rotation</span><span class="p">(</span><span class="n">rel_irrel_pred</span><span class="p">):</span>
+<div class="viewcode-block" id="get_rotation"><a class="viewcode-back" href="../../Utilities.html#pysimrel.utilities.get_rotation">[docs]</a><span class="k">def</span> <span class="nf">get_rotation</span><span class="p">(</span><span class="n">rel_irrel_pred</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Create orthogonal rotation matrix</span>
 
 <span class="sd">    Creates an orthogonal rotation matrix from dictionary of relevant and irrelevant</span>
@@ -300,7 +300,10 @@
     <span class="n">rel_irrel</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">rel</span> <span class="o">+</span> <span class="p">[</span><span class="n">irrel</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span><span class="p">]</span>
     <span class="n">all_pos</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">rel_irrel</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
     <span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">all_pos</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_pos</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">reduce</span><span class="p">(</span><span class="n">get_rotate</span><span class="p">,</span> <span class="n">rel_irrel</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span></div>
+    <span class="n">mat_out</span> <span class="o">=</span> <span class="n">reduce</span><span class="p">(</span>
+        <span class="n">partial</span><span class="p">(</span><span class="n">get_rotate</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">),</span> 
+        <span class="n">rel_irrel</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mat_out</span></div>
 
 
 <div class="viewcode-block" id="sample_cov"><a class="viewcode-back" href="../../Utilities.html#pysimrel.utilities.sample_cov">[docs]</a><span class="k">def</span> <span class="nf">sample_cov</span><span class="p">(</span><span class="n">lmd</span><span class="p">,</span> <span class="n">rsq</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">alpha_</span><span class="p">):</span>
@@ -375,7 +378,8 @@
 <span class="sd">    :return: A nested list of parsed parameters</span>
 <span class="sd">    :rtype: list</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
+    <span class="k">if</span> <span class="n">parm</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Argument must include an integer.&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parm</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parm</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">[[</span><span class="n">parm</span><span class="p">]]</span>
     <span class="n">parm</span> <span class="o">=</span> <span class="n">parm</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;[,;]&quot;</span><span class="p">)</span>
