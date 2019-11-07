@@ -225,7 +225,8 @@ def parse_param(parm: Optional[Prm]):
     :return: A nested list of parsed parameters
     :rtype: list
     """
-
+    if parm in ["", ",", ";"]:
+        raise ValueError("Argument must include an integer.")
     if isinstance(parm, int) or isinstance(parm, float):
         return [[parm]]
     parm = parm.replace(" ", "").rstrip("[,;]")
