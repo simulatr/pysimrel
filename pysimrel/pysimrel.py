@@ -1,4 +1,5 @@
-from .utilities import *
+from pysimrel.utilities import *
+from pysimrel.pysimrel import *
 from functools import reduce
 from typing import Union
 from dataclasses import dataclass, field
@@ -332,3 +333,6 @@ class Simrel:
         y = y.flatten() if y.shape[1] == 1 else y
         out = Data(X=x, Y=y)
         return out
+
+if __name__ == "__main__":
+    pass

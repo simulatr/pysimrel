@@ -232,3 +232,6 @@ def parse_param(parm: Optional[Prm]):
     parm = parm.replace(" ", "").rstrip("[,;]")
     out = [[int(y) for y in x.split(",")] for x in parm.split(";")]
     return out
+
+if __name__ == "__main__":
+    pass
