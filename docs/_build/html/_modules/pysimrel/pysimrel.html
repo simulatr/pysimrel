@@ -1,71 +1,36 @@
-
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>pysimrel.pysimrel &mdash; PySimrel 0.5.5 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> PySimrel
-          
-
-          
           </a>
-
-          
-            
-            
               <div class="version">
                 0.5.5
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -73,90 +38,43 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Modules.html">Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Classes.html">Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Utilities.html">Utilities Functions</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">PySimrel</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
-        
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-        
       <li>pysimrel.pysimrel</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <h1>Source code for pysimrel.pysimrel</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.utilities</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.pysimrel</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.simrelplot</span> <span class="k">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="k">import</span> <span class="n">reduce</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Union</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span></span><span class="kn">from</span> <span class="nn">pysimrel.utilities</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">pysimrel.pysimrel</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">reduce</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">Prm</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
@@ -189,7 +107,7 @@
     <span class="n">cov_xx</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">cov_xy</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">ww</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cov_ww</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">zz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cov_zz</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">zw</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cov_zw</span><span class="o">.</span><span class="n">shape</span>
@@ -198,23 +116,23 @@
         <span class="n">xx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cov_xx</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">xy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cov_xy</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">yx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cov_xy</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span>
-        <span class="k">return</span> <span class="n">f</span><span class="s2">&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">        Numpy Arrays:</span>
-<span class="s2">        {&#39;+&#39;.ljust(14, &#39;-&#39;) + &#39;+&#39;.ljust(20, &#39;-&#39;) + &#39;+&#39;}</span>
-<span class="s2">        {&#39;|&#39;.ljust(14, &#39; &#39;) + &#39;|&#39;.ljust(20, &#39; &#39;) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39; + &#39;cov_ww&#39;.center(13) + &#39;|&#39; + &#39;cov_wz&#39;.center(19) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39; + &#39;cov_yy&#39;.center(13) + &#39;|&#39; + &#39;cov_xy&#39;.center(19) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39; + str(yy).center(13) + &#39;|&#39; + str(yx).center(19) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39;.ljust(14, &#39; &#39;) + &#39;|&#39;.ljust(20, &#39; &#39;) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;+&#39;.ljust(14, &#39;-&#39;) + &#39;+&#39;.ljust(20, &#39;-&#39;) + &#39;+&#39;}</span>
-<span class="s2">        {&#39;|&#39;.ljust(14, &#39; &#39;) + &#39;|&#39;.ljust(20, &#39; &#39;) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39;.ljust(14, &#39; &#39;) + &#39;|&#39;.ljust(20, &#39; &#39;) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39; + &#39;cov_zw&#39;.center(13) + &#39;|&#39; + &#39;cov_zz&#39;.center(19) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39; + &#39;cov_xy&#39;.center(13) + &#39;|&#39; + &#39;cov_xx&#39;.center(19) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39; + str(xy).center(13) + &#39;|&#39; + str(xx).center(19) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39;.ljust(14, &#39; &#39;) + &#39;|&#39;.ljust(20, &#39; &#39;) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;|&#39;.ljust(14, &#39; &#39;) + &#39;|&#39;.ljust(20, &#39; &#39;) + &#39;|&#39;}</span>
-<span class="s2">        {&#39;+&#39;.ljust(14, &#39;-&#39;) + &#39;+&#39;.ljust(20, &#39;-&#39;) + &#39;+&#39;}</span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_ww&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_wz&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_yy&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_xy&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">yx</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_zw&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_zz&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_xy&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="s1">&#39;cov_xx&#39;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;|&#39;</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">        </span><span class="si">{</span><span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;+&#39;</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">        &quot;&quot;&quot;</span></div>
 
 
@@ -264,18 +182,18 @@
     <span class="n">rotation_x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
     <span class="n">rotation_y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">arr_items</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)}</span>
         <span class="n">dict_items</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)}</span>
         <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Numpy Arrays:&quot;</span><span class="p">)</span>
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">arr_items</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{str(key) + &quot;:&quot;:&lt;25}{&quot;Shape: &quot; + str(value.shape):&lt;20}&#39;</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="si">:</span><span class="s1">&lt;25</span><span class="si">}{</span><span class="s2">&quot;Shape: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="si">:</span><span class="s1">&lt;20</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dictionaries:&quot;</span><span class="p">)</span>
         <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">))</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dict_items</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{key + &quot;:&quot;:&lt;25}{&quot;Keys: &quot; + &quot;, &quot;.join(value.keys()):&lt;20}&#39;</span><span class="p">)</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span><span class="si">:</span><span class="s1">&lt;25</span><span class="si">}{</span><span class="s2">&quot;Keys: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">:</span><span class="s1">&lt;20</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
 
 
@@ -493,42 +411,30 @@
 </pre></div>
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2018, Raju Rimal
-
-    </p>
+    <p>&#169; Copyright 2018, Raju Rimal.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

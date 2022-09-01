@@ -4,6 +4,11 @@
 \ifdefined\pdfpxdimen
    \let\sphinxpxdimen\pdfpxdimen\else\newdimen\sphinxpxdimen
 \fi \sphinxpxdimen=.75bp\relax
+\ifdefined\pdfimageresolution
+    \pdfimageresolution= \numexpr \dimexpr1in\relax/\sphinxpxdimen\relax
+\fi
+%% let collapsible pdf bookmarks panel have high depth per default
+\PassOptionsToPackage{bookmarksdepth=5}{hyperref}
 
 \PassOptionsToPackage{warn}{textcomp}
 \usepackage[utf8]{inputenc}
@@ -28,35 +33,18 @@
 
 
 
-\usepackage{times}
-\expandafter\ifx\csname T@LGR\endcsname\relax
-\else
-% LGR was declared as font encoding
-  \substitutefont{LGR}{\rmdefault}{cmr}
-  \substitutefont{LGR}{\sfdefault}{cmss}
-  \substitutefont{LGR}{\ttdefault}{cmtt}
-\fi
-\expandafter\ifx\csname T@X2\endcsname\relax
-  \expandafter\ifx\csname T@T2A\endcsname\relax
-  \else
-  % T2A was declared as font encoding
-    \substitutefont{T2A}{\rmdefault}{cmr}
-    \substitutefont{T2A}{\sfdefault}{cmss}
-    \substitutefont{T2A}{\ttdefault}{cmtt}
-  \fi
-\else
-% X2 was declared as font encoding
-  \substitutefont{X2}{\rmdefault}{cmr}
-  \substitutefont{X2}{\sfdefault}{cmss}
-  \substitutefont{X2}{\ttdefault}{cmtt}
-\fi
+\usepackage{tgtermes}
+\usepackage{tgheros}
+\renewcommand{\ttdefault}{txtt}
+
 
 
 \usepackage[Bjarne]{fncychap}
 \usepackage{sphinx}
 
-\fvset{fontsize=\small}
+\fvset{fontsize=auto}
 \usepackage{geometry}
+
 
 % Include hyperref last.
 \usepackage{hyperref}
@@ -65,19 +53,25 @@
 % Set up styles of URL: it should be placed after hyperref.
 \urlstyle{same}
 
+
 \usepackage{sphinxmessages}
 \setcounter{tocdepth}{1}
 
 
 
 \title{simrel Documentation}
-\date{Oct 14, 2019}
+\date{Sep 01, 2022}
 \release{0.5.5}
 \author{Raju Rimal}
 \newcommand{\sphinxlogo}{\vbox{}}
 \renewcommand{\releasename}{Release}
 \makeindex
 \begin{document}
+
+\ifdefined\shorthandoff
+  \ifnum\catcode`\=\string=\active\shorthandoff{=}\fi
+  \ifnum\catcode`\"=\active\shorthandoff{"}\fi
+\fi
 
 \pagestyle{empty}
 \sphinxmaketitle
@@ -87,11 +81,14 @@
 \phantomsection\label{\detokenize{index::doc}}
 
 
+\sphinxAtStartPar
 PySimrel package provides a way to simuilate data from a linear model. It provides few sets of parameters that users can specify to simulate the data. With these few sets of parameters, user can get wide range of properties in the simulated data.
 
 
 \chapter{Contents:}
 \label{\detokenize{index:contents}}
+\sphinxstepscope
+
 
 \section{Modules}
 \label{\detokenize{Modules:modules}}\label{\detokenize{Modules::doc}}
@@ -128,23 +125,26 @@ PySimrel package provides a way to simuilate data from a linear model. It provid
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{sobj}\PYG{o}{.}\PYG{n}{covariances}\PYG{p}{)}
 \PYG{g+go}{    Numpy Arrays:}
 \PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}ww   \textbar{}       cov\PYGZus{}wz      \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}yy   \textbar{}       cov\PYGZus{}xy      \textbar{}}
-\PYG{g+go}{    \textbar{}    (4, 4)   \textbar{}      (4, 10)      \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |    cov\PYGZus{}ww   |       cov\PYGZus{}wz      |}
+\PYG{g+go}{    |    cov\PYGZus{}yy   |       cov\PYGZus{}xy      |}
+\PYG{g+go}{    |    (4, 4)   |      (4, 10)      |}
+\PYG{g+go}{    |             |                   |}
 \PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}zw   \textbar{}       cov\PYGZus{}zz      \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}xy   \textbar{}       cov\PYGZus{}xx      \textbar{}}
-\PYG{g+go}{    \textbar{}   (10, 4)   \textbar{}      (10, 10)     \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |    cov\PYGZus{}zw   |       cov\PYGZus{}zz      |}
+\PYG{g+go}{    |    cov\PYGZus{}xy   |       cov\PYGZus{}xx      |}
+\PYG{g+go}{    |   (10, 4)   |      (10, 10)     |}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |             |                   |}
 \PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
 \end{sphinxVerbatim}
-\phantomsection\label{\detokenize{Modules:module-pysimrel}}\index{pysimrel (module)@\spxentry{pysimrel}\spxextra{module}}
+\phantomsection\label{\detokenize{Modules:module-pysimrel}}\index{module@\spxentry{module}!pysimrel@\spxentry{pysimrel}}\index{pysimrel@\spxentry{pysimrel}!module@\spxentry{module}}
+\sphinxAtStartPar
 Simrel is a package for simulating linear model data
+
+\sphinxstepscope
 
 
 \section{Classes}
@@ -154,9 +154,14 @@ Simrel is a package for simulating linear model data
 \label{\detokenize{Classes:simrel-class}}\index{Simrel (class in pysimrel)@\spxentry{Simrel}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Simrel}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Simrel}}}{\emph{n\_pred: Union{[}str}, \emph{int{]} = 10}, \emph{n\_relpred: Union{[}str}, \emph{int{]} = '4}, \emph{5'}, \emph{pos\_relcomp: Union{[}str}, \emph{int{]} = '0}, \emph{1; 2}, \emph{3}, \emph{4'}, \emph{gamma: float = 0.7}, \emph{rsq: Union{[}str}, \emph{int{]} = '0.7}, \emph{0.8'}, \emph{n\_resp: Union{[}str}, \emph{int{]} = 4}, \emph{eta: float = 0.7}, \emph{pos\_resp: Union{[}str}, \emph{int{]} = '0}, \emph{2; 1}, \emph{3'}, \emph{mu\_x: Union{[}str}, \emph{int{]} = None}, \emph{mu\_y: Union{[}str}, \emph{int{]} = None}, \emph{parameter\_parsed: bool = False}, \emph{properties\_computed: bool = False}}{}
+\phantomsection\label{\detokenize{Classes:pysimrel.Simrel}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{Simrel}}}{\emph{\DUrole{n}{n\_pred}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{10}}, \emph{\DUrole{n}{n\_relpred}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{\textquotesingle{}4, 5\textquotesingle{}}}, \emph{\DUrole{n}{pos\_relcomp}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{\textquotesingle{}0, 1; 2, 3, 4\textquotesingle{}}}, \emph{\DUrole{n}{gamma}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{float}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{0.7}}, \emph{\DUrole{n}{rsq}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{\textquotesingle{}0.7, 0.8\textquotesingle{}}}, \emph{\DUrole{n}{n\_resp}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{4}}, \emph{\DUrole{n}{eta}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{float}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{0.7}}, \emph{\DUrole{n}{pos\_resp}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{\textquotesingle{}0, 2; 1, 3\textquotesingle{}}}, \emph{\DUrole{n}{mu\_x}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Optional\DUrole{p}{{[}}Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{None}}, \emph{\DUrole{n}{mu\_y}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Optional\DUrole{p}{{[}}Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}\DUrole{p}{{]}}}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{None}}, \emph{\DUrole{n}{parameter\_parsed}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{bool}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{False}}, \emph{\DUrole{n}{properties\_computed}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{bool}\DUrole{w}{  }\DUrole{o}{=}\DUrole{w}{  }\DUrole{default_value}{False}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Main Class for simulated objects
 
+\sphinxAtStartPar
 The class contains all the definitions of \sphinxtitleref{simrel} objects. The class will also
 provide necessary methods to compute various population properties.
 
@@ -190,28 +195,33 @@ provide necessary methods to compute various population properties.
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{sobj}\PYG{o}{.}\PYG{n}{covariances}\PYG{p}{)}
 \PYG{g+go}{    Numpy Arrays:}
 \PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}ww   \textbar{}       cov\PYGZus{}wz      \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}yy   \textbar{}       cov\PYGZus{}xy      \textbar{}}
-\PYG{g+go}{    \textbar{}    (4, 4)   \textbar{}      (4, 10)      \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |    cov\PYGZus{}ww   |       cov\PYGZus{}wz      |}
+\PYG{g+go}{    |    cov\PYGZus{}yy   |       cov\PYGZus{}xy      |}
+\PYG{g+go}{    |    (4, 4)   |      (4, 10)      |}
+\PYG{g+go}{    |             |                   |}
 \PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}zw   \textbar{}       cov\PYGZus{}zz      \textbar{}}
-\PYG{g+go}{    \textbar{}    cov\PYGZus{}xy   \textbar{}       cov\PYGZus{}xx      \textbar{}}
-\PYG{g+go}{    \textbar{}   (10, 4)   \textbar{}      (10, 10)     \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
-\PYG{g+go}{    \textbar{}             \textbar{}                   \textbar{}}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |    cov\PYGZus{}zw   |       cov\PYGZus{}zz      |}
+\PYG{g+go}{    |    cov\PYGZus{}xy   |       cov\PYGZus{}xx      |}
+\PYG{g+go}{    |   (10, 4)   |      (10, 10)     |}
+\PYG{g+go}{    |             |                   |}
+\PYG{g+go}{    |             |                   |}
 \PYG{g+go}{    +\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
 \end{sphinxVerbatim}
 \index{n\_pred (Simrel attribute)@\spxentry{n\_pred}\spxextra{Simrel attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Simrel.n_pred}}\pysigline{\sphinxbfcode{\sphinxupquote{n\_pred}}}
+\phantomsection\label{\detokenize{Classes:pysimrel.Simrel.n_pred}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{n\_pred}}}
+\pysigstopsignatures
+\sphinxAtStartPar
 Number of predictor variables. Ex: \sphinxtitleref{n\_pred: 10}
 \begin{quote}\begin{description}
-\item[{Type}] \leavevmode
+\sphinxlineitem{Type}
+\sphinxAtStartPar
 Either integer or string
 
 \end{description}\end{quote}
@@ -221,12 +231,17 @@ Either integer or string
 \index{n\_relpred (Simrel attribute)@\spxentry{n\_relpred}\spxextra{Simrel attribute}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Simrel.n_relpred}}\pysigline{\sphinxbfcode{\sphinxupquote{n\_relpred}}}
+\phantomsection\label{\detokenize{Classes:pysimrel.Simrel.n_relpred}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{n\_relpred}}}
+\pysigstopsignatures
+\sphinxAtStartPar
 Number of relevant predictor variables for each response components
 In the case of single response model, the parameters refers to the
 number of predictors relevant for that single response
 \begin{quote}\begin{description}
-\item[{Type}] \leavevmode
+\sphinxlineitem{Type}
+\sphinxAtStartPar
 Either integer or string
 
 \end{description}\end{quote}
@@ -236,7 +251,11 @@ Either integer or string
 \index{parse\_parameters() (Simrel method)@\spxentry{parse\_parameters()}\spxextra{Simrel method}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Simrel.parse_parameters}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{parse\_parameters}}}{}{}
+\phantomsection\label{\detokenize{Classes:pysimrel.Simrel.parse_parameters}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{parse\_parameters}}}{}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Parse the parameters passed during initialization
 This method parse the parameters which are passed as string into
 a nested list. It uses \sphinxcode{\sphinxupquote{parse\_parm()}} function where further
@@ -253,28 +272,39 @@ documentation can be found.
 \label{\detokenize{Classes:helper-classes}}\index{Covariances (class in pysimrel)@\spxentry{Covariances}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Covariances}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Covariances}}}
+\phantomsection\label{\detokenize{Classes:pysimrel.Covariances}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{Covariances}}}
+\pysigstopsignatures
+\sphinxAtStartPar
 Class defining various covariances of the simulated data
 
+\sphinxAtStartPar
 This provides a nice graphical output of covariances.
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{cov\_ww}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Covariance matrix of latent components of response
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{cov\_zz}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Covariance matrix of latent components of predictors
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{cov\_zw}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Covariance matrix containing covariances between latent components of predictors and response
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{cov\_yy}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Covariance matrix of response
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{cov\_xx}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Covariance matrix of response
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{cov\_xy}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Covariance matrix containing covariances between predictors and response
 
 \end{itemize}
@@ -286,47 +316,64 @@ This provides a nice graphical output of covariances.
 \index{Properties (class in pysimrel)@\spxentry{Properties}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Properties}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Properties}}}
+\phantomsection\label{\detokenize{Classes:pysimrel.Properties}}
+\pysigstartsignatures
+\pysigline{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{Properties}}}
+\pysigstopsignatures
+\sphinxAtStartPar
 A data class for different properties of simulated object
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{eigen\_x}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Eigenvalues corresponding to predictors
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{eigen\_y}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Eigenvalues corresponding to responses
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{relevant\_predictors}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Position index of relevant predictors for each responses
 
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{sigma\_latent}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Variance-Covariance matrix of latent components of predictors and Responses
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{sigma\_latent}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Variance\sphinxhyphen{}Covariance matrix of latent components of predictors and Responses
 
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{sigma}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Variance-Covariance matrix of predictors and Responses
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{sigma}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Variance\sphinxhyphen{}Covariance matrix of predictors and Responses
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{beta\_z}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Regression coefficient corresponding to the principal components of predictors
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{beta}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Regression coefficient corresponding to the predictor variables
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{beta0}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Regression Intercept
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rsq\_w}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Coefficient of determination for latent component of responses (Variation explained by latent components of predictors on latent components of response)
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rsq}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Coefficient of determination for responses (Variation explained by predictors on response)
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{minerror}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} True minimum model error
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rotation\_x}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray}}) \textendash{} Rotation Matrix (eigenvector matrix) corresponding to predictors
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rotation\_y}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.ndarray = None}}) \textendash{} Rotation Matrix (eigenvector matrix) corresponding to response
 
 \end{itemize}
@@ -338,43 +385,60 @@ A data class for different properties of simulated object
 \index{Data (class in pysimrel)@\spxentry{Data}\spxextra{class in pysimrel}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Classes:pysimrel.Data}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxbfcode{\sphinxupquote{Data}}}{\emph{X: numpy.ndarray}, \emph{Y: numpy.ndarray}}{}
+\phantomsection\label{\detokenize{Classes:pysimrel.Data}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class\DUrole{w}{  }}}\sphinxbfcode{\sphinxupquote{Data}}}{\emph{\DUrole{n}{X}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{numpy.ndarray}}, \emph{\DUrole{n}{Y}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{numpy.ndarray}}}{}
+\pysigstopsignatures
 \end{fulllineitems}
 
 
+\sphinxstepscope
+
 
 \section{Utilities Functions}
-\label{\detokenize{Utilities:module-pysimrel.utilities}}\label{\detokenize{Utilities:utilities-functions}}\label{\detokenize{Utilities::doc}}\index{pysimrel.utilities (module)@\spxentry{pysimrel.utilities}\spxextra{module}}\index{get\_cov() (in module pysimrel.utilities)@\spxentry{get\_cov()}\spxextra{in module pysimrel.utilities}}
+\label{\detokenize{Utilities:module-pysimrel.utilities}}\label{\detokenize{Utilities:utilities-functions}}\label{\detokenize{Utilities::doc}}\index{module@\spxentry{module}!pysimrel.utilities@\spxentry{pysimrel.utilities}}\index{pysimrel.utilities@\spxentry{pysimrel.utilities}!module@\spxentry{module}}\index{get\_cov() (in module pysimrel.utilities)@\spxentry{get\_cov()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_cov}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_cov}}}{\emph{rel\_pos}, \emph{rsq}, \emph{kappa}, \emph{lmd}, \emph{random\_seed=None}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_cov}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_cov}}}{\emph{\DUrole{n}{rel\_pos}}, \emph{\DUrole{n}{rsq}}, \emph{\DUrole{n}{kappa}}, \emph{\DUrole{n}{lmd}}, \emph{\DUrole{n}{random\_seed}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Compute Covariances
 
+\sphinxAtStartPar
 Compute covariances at the position specified in \sphinxcode{\sphinxupquote{rel\_pos}} recursively using the
 function \sphinxcode{\sphinxupquote{sample\_cov}} satisfying the \sphinxcode{\sphinxupquote{rsq}} and the eigen values in \sphinxcode{\sphinxupquote{kappa}} and \sphinxcode{\sphinxupquote{lmd}}.
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rel\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} position of relevant components
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rsq}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A list of coefficient of determination
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{kappa}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A list of eigenvalues related to response variables
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{lmd}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A list of eigenvalues related to predictor variables
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{random\_seed}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} An integer for random state
 
 \end{itemize}
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 A matrix of dimension equals to the length of \sphinxcode{\sphinxupquote{kappa}} by length of \sphinxcode{\sphinxupquote{lmd}} with     computed covariances at the position specified in \sphinxcode{\sphinxupquote{rel\_pos}}.
 
-\item[{Return type}] \leavevmode
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
 np.array
 
 \end{description}\end{quote}
@@ -384,24 +448,32 @@ np.array
 \index{get\_eigen() (in module pysimrel.utilities)@\spxentry{get\_eigen()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_eigen}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_eigen}}}{\emph{rate}, \emph{nvar}, \emph{min\_value=0.0001}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_eigen}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_eigen}}}{\emph{\DUrole{n}{rate}}, \emph{\DUrole{n}{nvar}}, \emph{\DUrole{n}{min\_value}\DUrole{o}{=}\DUrole{default_value}{0.0001}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Compute eigen values using exponential decay function.
 \begin{equation*}
 \begin{split}\lambda_i = \text{exp}^{-\gamma(i-1)}\end{split}
 \end{equation*}\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rate}} \textendash{} rate of exponential decay factor
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{nvar}} \textendash{} Number of variables (number of eigenvalues to compute)
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{min\_value}} \textendash{} Lower limit for smallest eigenvalue
 
 \end{itemize}
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 A list of eigenvalues
 
 \end{description}\end{quote}
@@ -411,32 +483,43 @@ A list of eigenvalues
 \index{get\_relpred() (in module pysimrel.utilities)@\spxentry{get\_relpred()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_relpred}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_relpred}}}{\emph{n\_pred}, \emph{n\_relpred}, \emph{pos\_relcomp}, \emph{random\_state=None}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_relpred}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_relpred}}}{\emph{\DUrole{n}{n\_pred}}, \emph{\DUrole{n}{n\_relpred}}, \emph{\DUrole{n}{pos\_relcomp}}, \emph{\DUrole{n}{random\_state}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Identify relevant predictors through sampling
 
+\sphinxAtStartPar
 Get relevant and irrelevant position of predictor variables. The irrelevant
 components index are the one which are not in \sphinxcode{\sphinxupquote{pos\_relcomp}}. The number of extra components
 are defined in \sphinxcode{\sphinxupquote{n\_relpred}}.
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{n\_pred}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Number of predictor variables
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{n\_relpred}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} List of number of predictors relevant for each response
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{pos\_relcomp}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} List of List containing the position index of relevant components
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{random\_state}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} An integer for random state
 
 \end{itemize}
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 A dictionary with relevant and irrelevant position index of predictors
 
-\item[{Return type}] \leavevmode
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
 dict
 
 \end{description}\end{quote}
@@ -446,26 +529,35 @@ dict
 \index{get\_rotate() (in module pysimrel.utilities)@\spxentry{get\_rotate()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotate}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_rotate}}}{\emph{mat}, \emph{pred\_pos}, \emph{random\_state=None}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotate}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_rotate}}}{\emph{\DUrole{n}{mat}}, \emph{\DUrole{n}{pred\_pos}}, \emph{\DUrole{n}{random\_state}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Fill up a block of matrix \sphinxcode{\sphinxupquote{mat}} based on position index in \sphinxcode{\sphinxupquote{pred\_pos}}.
 The block will be an orthogonal rotation matrix.
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{mat}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.array}}) \textendash{} A matrix possibly a square matrix as covariance
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{pred\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A list of position index for the block rotation
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{random\_state}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} An integer for random state to control randomness
 
 \end{itemize}
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 A matrix of same size as \sphinxcode{\sphinxupquote{mat}} but filled with an orthogonal block
 
-\item[{Return type}] \leavevmode
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
 np.array
 
 \end{description}\end{quote}
@@ -475,19 +567,27 @@ np.array
 \index{get\_rotation() (in module pysimrel.utilities)@\spxentry{get\_rotation()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotation}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_rotation}}}{\emph{rel\_irrel\_pred}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.get_rotation}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{get\_rotation}}}{\emph{\DUrole{n}{rel\_irrel\_pred}}, \emph{\DUrole{n}{random\_state}\DUrole{o}{=}\DUrole{default_value}{None}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Create orthogonal rotation matrix
 
+\sphinxAtStartPar
 Creates an orthogonal rotation matrix from dictionary of relevant and irrelevant
 positions using \sphinxtitleref{get\_rotate} function.
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rel\_irrel\_pred}} (\sphinxstyleliteralemphasis{\sphinxupquote{dict}}) \textendash{} A dictionary of relevant and irrelevant position (possibly obtained from the function \sphinxtitleref{get\_relpred}.
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 An orthogonal rotation matrix
 
-\item[{Return type}] \leavevmode
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
 np.array
 
 \end{description}\end{quote}
@@ -497,16 +597,23 @@ np.array
 \index{parse\_param() (in module pysimrel.utilities)@\spxentry{parse\_param()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.parse_param}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{parse\_param}}}{\emph{parm: Union{[}str, int, None{]}}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.parse_param}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{parse\_param}}}{\emph{\DUrole{n}{parm}\DUrole{p}{:}\DUrole{w}{  }\DUrole{n}{Optional\DUrole{p}{{[}}Union\DUrole{p}{{[}}str\DUrole{p}{,}\DUrole{w}{  }int\DUrole{p}{{]}}\DUrole{p}{{]}}}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Parse the parameters from string to a nested list
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
+\sphinxlineitem{Parameters}
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{parm}} (\sphinxstyleliteralemphasis{\sphinxupquote{str}}\sphinxstyleliteralemphasis{\sphinxupquote{, }}\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} Either integer, float (in some cases) or mostly string
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 A nested list of parsed parameters
 
-\item[{Return type}] \leavevmode
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
 list
 
 \end{description}\end{quote}
@@ -516,33 +623,45 @@ list
 \index{sample\_cov() (in module pysimrel.utilities)@\spxentry{sample\_cov()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_cov}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{sample\_cov}}}{\emph{lmd}, \emph{rsq}, \emph{pos}, \emph{kappa}, \emph{alpha\_}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_cov}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{sample\_cov}}}{\emph{\DUrole{n}{lmd}}, \emph{\DUrole{n}{rsq}}, \emph{\DUrole{n}{pos}}, \emph{\DUrole{n}{kappa}}, \emph{\DUrole{n}{alpha\_}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Compute covariance satisfying given parameters
 
+\sphinxAtStartPar
 Compute covariance from a sample of uniform distribution satisfying \sphinxtitleref{rsq}, a set of \sphinxtitleref{lmd} and \sphinxtitleref{kappa}
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{lmd}} (\sphinxstyleliteralemphasis{\sphinxupquote{set}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A set of eigenvalue of predictors at position specified by \sphinxcode{\sphinxupquote{pos}}.
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rsq}} (\sphinxstyleliteralemphasis{\sphinxupquote{float}}) \textendash{} Coefficient of determination
 
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} Position index of in which covariance need to be non-zero
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} Position index of in which covariance need to be non\sphinxhyphen{}zero
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{kappa}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} Eigenvalue corresponding to response (univariate) or response component (multivariate)
 
 \item {} 
-\sphinxstyleliteralstrong{\sphinxupquote{alpha}} \textendash{} A sample from univariate distribution between -1 and 1
+\sphinxAtStartPar
+\sphinxstyleliteralstrong{\sphinxupquote{alpha}} \textendash{} A sample from univariate distribution between \sphinxhyphen{}1 and 1
 
 \end{itemize}
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 An array of computed covariances of length equals to \sphinxcode{\sphinxupquote{lmd}}.
 
-\item[{Return type}] \leavevmode
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
 np.array
 
 \end{description}\end{quote}
@@ -552,30 +671,41 @@ np.array
 \index{sample\_extra\_pos() (in module pysimrel.utilities)@\spxentry{sample\_extra\_pos()}\spxextra{in module pysimrel.utilities}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_extra_pos}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{sample\_extra\_pos}}}{\emph{rs}, \emph{n\_extra\_pos}, \emph{extra\_pos}, \emph{irrel\_pos}}{}
+\phantomsection\label{\detokenize{Utilities:pysimrel.utilities.sample_extra_pos}}
+\pysigstartsignatures
+\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{sample\_extra\_pos}}}{\emph{\DUrole{n}{rs}}, \emph{\DUrole{n}{n\_extra\_pos}}, \emph{\DUrole{n}{extra\_pos}}, \emph{\DUrole{n}{irrel\_pos}}}{}
+\pysigstopsignatures
+\sphinxAtStartPar
 Sample Extra Position Required
 
+\sphinxAtStartPar
 Sample position index of extra relevant predictors from irrelevant predictors in \sphinxcode{\sphinxupquote{irrel\_pos}}.
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode\begin{itemize}
+\sphinxlineitem{Parameters}\begin{itemize}
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{rs}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.random.mtrand.RandomState}}) \textendash{} A numpy RandomSeed object
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{n\_extra\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{int}}) \textendash{} An integer for number of extra position index to sample
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{extra\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A list container for collecting extra relevant components
 
 \item {} 
+\sphinxAtStartPar
 \sphinxstyleliteralstrong{\sphinxupquote{irrel\_pos}} (\sphinxstyleliteralemphasis{\sphinxupquote{list}}) \textendash{} A list or set of irrelevant position indices
 
 \end{itemize}
 
-\item[{Returns}] \leavevmode
+\sphinxlineitem{Returns}
+\sphinxAtStartPar
 a list of relevant and irrelevant position indices
 
-\item[{Return type}] \leavevmode
+\sphinxlineitem{Return type}
+\sphinxAtStartPar
 list
 
 \end{description}\end{quote}

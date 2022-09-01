@@ -15,9 +15,15 @@
   \bigletter G
   \item \spxentry{get\_cov()}\spxextra{in module pysimrel.utilities}, \hyperpage{6}
   \item \spxentry{get\_eigen()}\spxextra{in module pysimrel.utilities}, \hyperpage{6}
-  \item \spxentry{get\_relpred()}\spxextra{in module pysimrel.utilities}, \hyperpage{6}
+  \item \spxentry{get\_relpred()}\spxextra{in module pysimrel.utilities}, \hyperpage{7}
   \item \spxentry{get\_rotate()}\spxextra{in module pysimrel.utilities}, \hyperpage{7}
   \item \spxentry{get\_rotation()}\spxextra{in module pysimrel.utilities}, \hyperpage{7}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{module}
+    \subitem \spxentry{pysimrel}, \hyperpage{4}
+    \subitem \spxentry{pysimrel.utilities}, \hyperpage{6}
 
   \indexspace
   \bigletter N
@@ -26,15 +32,17 @@
 
   \indexspace
   \bigletter P
-  \item \spxentry{parse\_param()}\spxextra{in module pysimrel.utilities}, \hyperpage{7}
+  \item \spxentry{parse\_param()}\spxextra{in module pysimrel.utilities}, \hyperpage{8}
   \item \spxentry{parse\_parameters()}\spxextra{Simrel method}, \hyperpage{5}
   \item \spxentry{Properties}\spxextra{class in pysimrel}, \hyperpage{5}
-  \item \spxentry{pysimrel}\spxextra{module}, \hyperpage{4}
-  \item \spxentry{pysimrel.utilities}\spxextra{module}, \hyperpage{6}
+  \item \spxentry{pysimrel}
+    \subitem \spxentry{module}, \hyperpage{4}
+  \item \spxentry{pysimrel.utilities}
+    \subitem \spxentry{module}, \hyperpage{6}
 
   \indexspace
   \bigletter S
-  \item \spxentry{sample\_cov()}\spxextra{in module pysimrel.utilities}, \hyperpage{7}
+  \item \spxentry{sample\_cov()}\spxextra{in module pysimrel.utilities}, \hyperpage{8}
   \item \spxentry{sample\_extra\_pos()}\spxextra{in module pysimrel.utilities}, \hyperpage{8}
   \item \spxentry{Simrel}\spxextra{class in pysimrel}, \hyperpage{4}
 

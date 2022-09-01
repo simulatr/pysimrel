@@ -3,9 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Utilities Functions</title>
-    <link rel="stylesheet" href="_static/epub.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/epub.css" />
     <link rel="stylesheet" type="text/css" href="_static/css/custom.css" /> 
   </head><body>
 
@@ -13,11 +15,11 @@
       <div class="documentwrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-pysimrel.utilities">
+  <section id="module-pysimrel.utilities">
 <span id="utilities-functions"></span><h1>Utilities Functions</h1>
-<dl class="function">
-<dt id="pysimrel.utilities.get_cov">
-<code class="sig-name descname">get_cov</code><span class="sig-paren">(</span><em class="sig-param">rel_pos</em>, <em class="sig-param">rsq</em>, <em class="sig-param">kappa</em>, <em class="sig-param">lmd</em>, <em class="sig-param">random_seed=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#get_cov"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.get_cov">
+<span class="sig-name descname"><span class="pre">get_cov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rsq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Compute Covariances</p>
 <p>Compute covariances at the position specified in <code class="docutils literal notranslate"><span class="pre">rel_pos</span></code> recursively using the
 function <code class="docutils literal notranslate"><span class="pre">sample_cov</span></code> satisfying the <code class="docutils literal notranslate"><span class="pre">rsq</span></code> and the eigen values in <code class="docutils literal notranslate"><span class="pre">kappa</span></code> and <code class="docutils literal notranslate"><span class="pre">lmd</span></code>.</p>
@@ -40,9 +42,9 @@ function <code class="docutils literal notranslate"><span class="pre">sample_cov
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysimrel.utilities.get_eigen">
-<code class="sig-name descname">get_eigen</code><span class="sig-paren">(</span><em class="sig-param">rate</em>, <em class="sig-param">nvar</em>, <em class="sig-param">min_value=0.0001</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#get_eigen"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.get_eigen">
+<span class="sig-name descname"><span class="pre">get_eigen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nvar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0001</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Compute eigen values using exponential decay function.</p>
 <div class="math notranslate nohighlight">
 \[\lambda_i = \text{exp}^{-\gamma(i-1)}\]</div>
@@ -60,9 +62,9 @@ function <code class="docutils literal notranslate"><span class="pre">sample_cov
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysimrel.utilities.get_relpred">
-<code class="sig-name descname">get_relpred</code><span class="sig-paren">(</span><em class="sig-param">n_pred</em>, <em class="sig-param">n_relpred</em>, <em class="sig-param">pos_relcomp</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#get_relpred"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.get_relpred">
+<span class="sig-name descname"><span class="pre">get_relpred</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_relpred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos_relcomp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Identify relevant predictors through sampling</p>
 <p>Get relevant and irrelevant position of predictor variables. The irrelevant
 components index are the one which are not in <code class="docutils literal notranslate"><span class="pre">pos_relcomp</span></code>. The number of extra components
@@ -85,9 +87,9 @@ are defined in <code class="docutils literal notranslate"><span class="pre">n_re
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysimrel.utilities.get_rotate">
-<code class="sig-name descname">get_rotate</code><span class="sig-paren">(</span><em class="sig-param">mat</em>, <em class="sig-param">pred_pos</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#get_rotate"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.get_rotate">
+<span class="sig-name descname"><span class="pre">get_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Fill up a block of matrix <code class="docutils literal notranslate"><span class="pre">mat</span></code> based on position index in <code class="docutils literal notranslate"><span class="pre">pred_pos</span></code>.
 The block will be an orthogonal rotation matrix.</p>
 <dl class="field-list simple">
@@ -107,9 +109,9 @@ The block will be an orthogonal rotation matrix.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysimrel.utilities.get_rotation">
-<code class="sig-name descname">get_rotation</code><span class="sig-paren">(</span><em class="sig-param">rel_irrel_pred</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#get_rotation"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.get_rotation">
+<span class="sig-name descname"><span class="pre">get_rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel_irrel_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create orthogonal rotation matrix</p>
 <p>Creates an orthogonal rotation matrix from dictionary of relevant and irrelevant
 positions using <cite>get_rotate</cite> function.</p>
@@ -126,9 +128,9 @@ positions using <cite>get_rotate</cite> function.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysimrel.utilities.parse_param">
-<code class="sig-name descname">parse_param</code><span class="sig-paren">(</span><em class="sig-param">parm: Union[str, int, None]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#parse_param"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.parse_param">
+<span class="sig-name descname"><span class="pre">parse_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Parse the parameters from string to a nested list</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -143,9 +145,9 @@ positions using <cite>get_rotate</cite> function.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysimrel.utilities.sample_cov">
-<code class="sig-name descname">sample_cov</code><span class="sig-paren">(</span><em class="sig-param">lmd</em>, <em class="sig-param">rsq</em>, <em class="sig-param">pos</em>, <em class="sig-param">kappa</em>, <em class="sig-param">alpha_</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#sample_cov"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.sample_cov">
+<span class="sig-name descname"><span class="pre">sample_cov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lmd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rsq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kappa</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Compute covariance satisfying given parameters</p>
 <p>Compute covariance from a sample of uniform distribution satisfying <cite>rsq</cite>, a set of <cite>lmd</cite> and <cite>kappa</cite></p>
 <dl class="field-list simple">
@@ -167,9 +169,9 @@ positions using <cite>get_rotate</cite> function.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysimrel.utilities.sample_extra_pos">
-<code class="sig-name descname">sample_extra_pos</code><span class="sig-paren">(</span><em class="sig-param">rs</em>, <em class="sig-param">n_extra_pos</em>, <em class="sig-param">extra_pos</em>, <em class="sig-param">irrel_pos</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pysimrel/utilities.xhtml#sample_extra_pos"><span class="viewcode-link">[source]</span></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysimrel.utilities.sample_extra_pos">
+<span class="sig-name descname"><span class="pre">sample_extra_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_extra_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">irrel_pos</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Sample Extra Position Required</p>
 <p>Sample position index of extra relevant predictors from irrelevant predictors in <code class="docutils literal notranslate"><span class="pre">irrel_pos</span></code>.</p>
 <dl class="field-list simple">
@@ -190,9 +192,10 @@ positions using <cite>get_rotate</cite> function.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
       </div>
       <div class="clearer"></div>

@@ -18,7 +18,7 @@ def plot_true_coef(obj):
     # ax[0,1].imshow(sobj.covariances.cov_zw.T)
     # ax[1,0].imshow(sobj.covariances.cov_zw)
     # ax[1,1].imshow(sobj.covariances.cov_zz)
-    plt.show()
+    # plt.show()
 
 sobj = Simrel()
 plot_true_coef(sobj)

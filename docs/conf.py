@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #
 # simrel documentation build configuration file, created by
-# sphinx-quickstart on Fri Feb 23 21:47:22 2018.
+# sphinx-quickstart on Fri Feb 23 21:47:22 2022.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'PySimrel'
-copyright = u'2018, Raju Rimal'
+copyright = u'2022, Raju Rimal'
 author = u'Raju Rimal'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -71,7 +71,7 @@ release = u'0.5.5'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
+language = 'en'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -315,5 +315,5 @@ texinfo_documents = [
 
 ## Add custom style sheet
 def setup(app):
-    app.add_stylesheet('css/custom.css')
+    app.add_css_file('css/custom.css')
 

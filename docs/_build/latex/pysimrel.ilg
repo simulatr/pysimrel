@@ -1,7 +1,7 @@
-This is makeindex, version 2.15 [TeX Live 2019] (kpathsea + Thai support).
+This is makeindex, version 2.16 [TeX Live 2022] (kpathsea + Thai support).
 Scanning style file ./python.ist.......done (7 attributes redefined, 0 ignored).
-Scanning input file pysimrel.idx....done (17 entries accepted, 0 rejected).
-Sorting entries....done (79 comparisons).
-Generating output file pysimrel.ind....done (41 lines written, 0 warnings).
+Scanning input file pysimrel.idx....done (19 entries accepted, 0 rejected).
+Sorting entries....done (84 comparisons).
+Generating output file pysimrel.ind....done (49 lines written, 0 warnings).
 Output written in pysimrel.ind.
 Transcript written in pysimrel.ilg.
