@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: pysimrel-pkg-therimalaya
-Version: 0.6.2
+Version: 0.6.3
 Summary: Simulation of Linear Model Data
 Home-page: https://github.com/simulatr/pysimrel
 Author: Raju Rimal
@@ -8,7 +8,7 @@ Author-email: therimalaya@gmail.com
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.9
+Requires-Python: >=3.7.13
 Description-Content-Type: text/markdown
 
 # `pysimrel`: Simulation of Linear Model Data

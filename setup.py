@@ -6,7 +6,7 @@ long_disc = (this_dir / "README.md").read_text()
 
 setup(
     name="pysimrel-pkg-therimalaya", # Replace with your own username
-    version="0.6.2",
+    version="0.6.3",
     author="Raju Rimal",
     author_email="therimalaya@gmail.com",
     description="Simulation of Linear Model Data",
@@ -19,5 +19,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.9',
+    python_requires='>=3.7.13',
 )
